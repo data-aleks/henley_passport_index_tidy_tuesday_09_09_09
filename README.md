@@ -33,5 +33,23 @@ To keep practicing data analytics, dashboard creation pandas and power bi. I wil
 ## Exploring Dataset
 
 ## Data cleaning
+1. df_country list
+    * Fill in missing value for Namibia country code as NA
+    * Transform original dataframe by exploding records in to separate rows containing country_code, related_country_code, visa_requirements. This will be fact_visa_requirements 
+    * Create a dataframe with country names and codes to be used as dimension. This will be dim_countries
+    * Crete a dataframe with visa requirements to be used as dimension. This will be dim_requirements
 
+2. df_rank_by_year
+    * Fill in missing values for Namibia country code. 
+    * Extract unique regions.
+    * Merge region in to df_countries dimension.
+    * Transform region values in to title case
+    * Remove region, and country from df_rank_by_year
+
+3. Save created csv files
+    * fact_visa_requirements - stores visa relationships between each countries. 
+    * fact_rank - stores country yearly ranking
+    * dim_countries - country names / region
+    * dim_requirements - visa requirements
+    
 ## Dashboard Creation
