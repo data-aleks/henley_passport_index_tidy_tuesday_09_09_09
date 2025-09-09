@@ -1,0 +1,6 @@
+control_key,control_description
+0,No restrictions
+1,Screening arrivals
+2,Quarantine arrivals from some or all regions
+3,Ban arrivals from some regions
+4,Ban on all regions or total border closure

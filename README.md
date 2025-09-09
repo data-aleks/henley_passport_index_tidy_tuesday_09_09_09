@@ -9,6 +9,7 @@ Thank you to [Brenden Smith and Jen Richmond](https://github.com/brendensm @jenr
 
 ## Dataset
 * **Source:** [Tidy Tuesday - 09.09.2025](https://github.com/rfordatascience/tidytuesday/blob/main/data/2025/2025-09-09/)
+* **Source:** [Oxford Covid-19 Government Response Tracker (OxCGRT)](https://github.com/OxCGRT/covid-policy-dataset/tree/main)
 
 ## Tech Stack
 * `pandas`
@@ -22,23 +23,32 @@ Thank you to [Brenden Smith and Jen Richmond](https://github.com/brendensm @jenr
 - How does political instability or economic crisis impact passport strength?
 
 ## Key Steps
-1. **Step 1. Exploring Dataset**
-2. **Step 2. Cleaning Data**
-3. **Step 3. Exporting data for Power BI Dashboard**
-4. **Step 4. Power BI Dashboard Creation**
+1. **Step 1. Loading data**
+2. **Step 2. Exploring Dataset**
+3. **Step 3. Cleaning Data**
+4. **Step 4. Exporting data for Power BI Dashboard**
+4. **Step 5. Power BI Dashboard Creation**
 
 ## Project Objective
 To keep practicing data analytics, dashboard creation pandas and power bi. I will attempt to answer questions stated in this challenge with all the tools available to me. 
 
-## Exploring Dataset
+In order to answer some of the stated questions i will need to utilise openly available dataset. In particular questions relating to Covid-19, political instability and economic crisis impact. 
 
-## Data cleaning
+## Step 2. Exploring Dataset
+1. df_country_list
+
+2. df_rank_by_year
+
+3. df_covid_data
+This is a very large dataset, most of the data will not be required and i will focus on the data related to the Tidy Tuesday challenge. I will extract data from this dataset: CountryName,CountryCode,Date, C8EV_International travel controls. Record restrictions on international travel. The values stored in this column range from 0 to 4. 0 - no restrictions,1 - screening arrivals , 2 - quarantine arrivals from some or all regions , 3 - ban arrivals from some regions , 4 - ban on all regions or total border closure. 
+
+## Step 3. Data cleaning
 1. df_country list
     * Fill in missing value for Namibia country code as NA
     * Transform original dataframe by exploding records in to separate rows containing country_code, related_country_code, visa_requirements. This will be fact_visa_requirements 
     * Create a dataframe with country names and codes to be used as dimension. This will be dim_countries
     * Crete a dataframe with visa requirements to be used as dimension. This will be dim_requirements
-
+    * Replaced country names with outside ASCII range characters. (Türkiye to Turkey)
 2. df_rank_by_year
     * Fill in missing values for Namibia country code. 
     * Extract unique regions.
@@ -46,10 +56,12 @@ To keep practicing data analytics, dashboard creation pandas and power bi. I wil
     * Transform region values in to title case
     * Remove region, and country from df_rank_by_year
 
+3. df_covid_data
+
 3. Save created csv files
     * fact_visa_requirements - stores visa relationships between each countries. 
     * fact_rank - stores country yearly ranking
     * dim_countries - country names / region
     * dim_requirements - visa requirements
-    
+
 ## Dashboard Creation
