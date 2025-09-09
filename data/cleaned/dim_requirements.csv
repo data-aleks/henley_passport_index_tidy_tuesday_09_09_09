@@ -1,6 +1,6 @@
-visa_requirements
-visa_required
-visa_online
-visa_on_arrival
-visa_free_access
-electronic_travel_authorisation
+visa_key,visa_requirements
+0,visa_required
+1,visa_online
+2,visa_on_arrival
+3,visa_free_access
+4,electronic_travel_authorisation
