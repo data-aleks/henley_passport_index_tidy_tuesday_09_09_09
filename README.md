@@ -10,6 +10,8 @@ Thank you to [Brenden Smith and Jen Richmond](https://github.com/brendensm @jenr
 ## Dataset
 * **Source:** [Tidy Tuesday - 09.09.2025](https://github.com/rfordatascience/tidytuesday/blob/main/data/2025/2025-09-09/)
 * **Source:** [Oxford Covid-19 Government Response Tracker (OxCGRT)](https://github.com/OxCGRT/covid-policy-dataset/tree/main)
+* **Source:** [Worldwide Governance Indicators](https://www.worldbank.org/en/publication/worldwide-governance-indicators)
+* **Source:** [World Bank Group - GDP growth (annual %)](https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG)
 
 ## Tech Stack
 * `pandas`
@@ -32,7 +34,7 @@ Thank you to [Brenden Smith and Jen Richmond](https://github.com/brendensm @jenr
 ## Project Objective
 To keep practicing data analytics, dashboard creation pandas and power bi. I will attempt to answer questions stated in this challenge with all the tools available to me. 
 
-In order to answer some of the stated questions i will need to utilise openly available dataset. In particular questions relating to Covid-19, political instability and economic crisis impact. 
+In order to answer some of the stated questions i will need to utilise openly available dataset. In particular questions relating to Covid-19 ( for this purpose we will use [Oxford Covid-19 Government Response Tracker (OxCGRT)](https://github.com/OxCGRT/covid-policy-dataset/tree/main)), political instability( for this we will use [Worldwide Governance Indicators](https://www.worldbank.org/en/publication/worldwide-governance-indicators)) and economic crisis impact (For this we will utilise [[World Bank Group - GDP growth (annual %)](https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG)]). 
 
 ## Step 2. Exploring Dataset
 1. df_country_list
@@ -42,6 +44,12 @@ In order to answer some of the stated questions i will need to utilise openly av
 3. df_covid_data
 This is a very large dataset, most of the data will not be required and i will focus on the data related to the Tidy Tuesday challenge. I will extract data from this dataset: CountryName,CountryCode,Date, C8EV_International travel controls. Record restrictions on international travel. The values stored in this column range from 0 to 4. 0 - no restrictions,1 - screening arrivals , 2 - quarantine arrivals from some or all regions , 3 - ban arrivals from some regions , 4 - ban on all regions or total border closure. 
 
+4. df_gdp_data
+This dataset is available publicly. Data comes in a wide format and needs to be transformed in to long format. 
+
+5. df_political_stability_data
+Fairly clean and well structured dataset.
+
 ## Step 3. Data cleaning
 1. df_country list
     * Fill in missing value for Namibia country code as NA
@@ -49,6 +57,7 @@ This is a very large dataset, most of the data will not be required and i will f
     * Create a dataframe with country names and codes to be used as dimension. This will be dim_countries
     * Crete a dataframe with visa requirements to be used as dimension. This will be dim_requirements
     * Replaced country names with outside ASCII range characters. (Türkiye to Turkey)
+
 2. df_rank_by_year
     * Fill in missing values for Namibia country code. 
     * Extract unique regions.
@@ -57,11 +66,27 @@ This is a very large dataset, most of the data will not be required and i will f
     * Remove region, and country from df_rank_by_year
 
 3. df_covid_data
+    * Extracted required columns
+    * Extracted year data from date integer
+    * Corrected country names due to mismatch with df_country
+    * Fixed country codes by joining df_country
+    * Created dim_travel_controls for travel restrictions
 
-3. Save created csv files
+5. df_gdp_data
+    * Converted from wide to long format to better suit power bi,
+    * Removed non country entries from the data
+    * Fixed naming of countries
+    
+5. df_political_stability_data
+    * Fixed country names
+    * Removed unrelated columns
+
+4. Save created csv files
     * fact_visa_requirements - stores visa relationships between each countries. 
     * fact_rank - stores country yearly ranking
     * dim_countries - country names / region
     * dim_requirements - visa requirements
+    * fact_covid - covid data
+    * dim_travel_controls - travel controls dimension
 
 ## Dashboard Creation
