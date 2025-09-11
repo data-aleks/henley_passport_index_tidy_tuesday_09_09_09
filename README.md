@@ -71,15 +71,17 @@ Fairly clean and well structured dataset.
     * Corrected country names due to mismatch with df_country
     * Fixed country codes by joining df_country
     * Created dim_travel_controls for travel restrictions
-
+    * Removed duplicate data and monthly granularity by grouping by year, aggregated control score using max control level in a year.
 5. df_gdp_data
     * Converted from wide to long format to better suit power bi,
-    * Removed non country entries from the data
-    * Fixed naming of countries
+    * Removed non country entries from the data.
+    * Fixed naming of countries.
     
 5. df_political_stability_data
     * Fixed country names
     * Removed unrelated columns
+    * Removed string values from estimate
+    * Changed estimate data type to float
 
 4. Save created csv files
     * fact_visa_requirements - stores visa relationships between each countries. 
