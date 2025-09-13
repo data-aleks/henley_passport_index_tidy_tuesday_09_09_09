@@ -59,11 +59,12 @@ Fairly clean and well structured dataset.
     * Replaced country names with outside ASCII range characters. (Türkiye to Turkey)
 
 2. df_rank_by_year
-    * Fill in missing values for Namibia country code. 
+    * Fill in missing values for Namibia country code
     * Extract unique regions.
-    * Merge region in to df_countries dimension.
+    * Merge region in to df_countries dimension
     * Transform region values in to title case
     * Remove region, and country from df_rank_by_year
+    * Filled missing values for visa_free_count using forward and backfill
 
 3. df_covid_data
     * Extracted required columns
@@ -71,17 +72,19 @@ Fairly clean and well structured dataset.
     * Corrected country names due to mismatch with df_country
     * Fixed country codes by joining df_country
     * Created dim_travel_controls for travel restrictions
-    * Removed duplicate data and monthly granularity by grouping by year, aggregated control score using max control level in a year.
+    * Removed duplicate data and monthly granularity by grouping by year, aggregated control score using max control level in a year
+
 5. df_gdp_data
-    * Converted from wide to long format to better suit power bi,
-    * Removed non country entries from the data.
-    * Fixed naming of countries.
+    * Converted from wide to long format to better suit power bi
+    * Removed non country entries from the data
+    * Fixed naming of countries
     
 5. df_political_stability_data
     * Fixed country names
     * Removed unrelated columns
     * Removed string values from estimate
     * Changed estimate data type to float
+    * Remove duplicate data by grouping by year, aggregated estimate using mean estimate in a year
 
 4. Save created csv files
     * fact_visa_requirements - stores visa relationships between each countries. 
